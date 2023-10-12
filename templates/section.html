@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleSection.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+    <title>Searched product</title>
+        <!-- Modal Popup -->
+  
+</head>
+
+
+<body>
+
+  <div class="fixed_bar">
+
+    <div class="icons">
+      <i class="fa fa-phone"></i> <!-- Phone icon -->
+      <i class="fa fa-shopping-basket"></i> <!-- Shop icon -->
+    </div>
+      
+
+  </div>
+
+  <div class="top-bar">
+    <div>
+      <div class="home-icon">
+        <a href="javascript:void(0);" id="menu-icon" class="home-icon">
+          <i class="fas fa-bars"></i>
+        </a>
+        
+      </div>
+      
+  <div class="menu" id="menu">
+    <!-- Your menu content goes here -->
+      <ul>
+        {% for kind in kinds %}
+        <li class="dropdown">
+          <a href="#">{{kind[0]}}</a>
+          <div class="submenu">
+            <a href="/kind?kind_value={{ kind[0] }}">{{kind[0]}}</a>
+            {% for sub_kind in kind[1] %}
+            <a href="/kind?kind_value={{ sub_kind }}">{{sub_kind}}</a>
+            {% endfor %}
+            <!-- Add more submenu items here -->
+          </div>
+        </li>
+        {% endfor %}
+        <!-- Add more list items for other kinds here -->
+      </ul>
+    </div>
+    </div>
+
+    <form action="/search" method="POST">
+      <div class="search-bar">
+        <input type="text" name="query" id="search-input" placeholder="Search..." onkeyup="searchOnEnter(event)">
+        <input type="submit" style="display: none;">
+      </div>
+    </form>
+
+    <a href="/home" class="logo">
+      <img src="static/Logo_Hanya5.png" alt="Your Logo">
+    </a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!-- **********************************************   PRODUCTS     ********************************************************************* -->
+<h1 class="searched-message">{{ section_value }} </h1>
+<div class="products_place">
+{% for product in sections_products %}
+{% if product[4] > 0 %}
+<!--<div class="main-content" >-->
+    <div class="product-card">
+      <div class="product-images">
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% for picture in product[5] %}
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="image-container">
+              <img src="{{ picture }}" alt="Product Image 1">
+              </div>
+            </div>
+            {% endfor %}
+    
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+    
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+    
+          <!-- If we need scrollbar -->
+          <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+      </div>
+      <div class="product-details">
+        <h3 class="product-name">{{ product[1] }}</h3>
+        <p class="product-price">{{ product[2] }} $</p>
+        <div class="product-description">
+          <p>{{ product[3][:100] }}{% if product[3]|length > 100 %}
+              <span class="more-text" style="display:none">{{ product[3][100:] }}</span>
+              <a href="javascript:void(0);" onclick="toggleDescription(this)">Read more</a>
+          {% endif %}</p>
+      </div>
+      <p class="quantity">Qte en stocke: {{ product[4] }}</p>
+      
+      </div>
+      <div class="product-footer">
+        <!--<span class="basket-icon" onclick="openLanding('{{ product[0] }}')">🛒</span>-->
+        <a href="/run_my_code?product_id={{ product[0] }}" class="basket-icon">اشتري</a>
+        <!--<span class="basket-icon" onclick="openProductOverlay('{{ product[6] }}', '{{ product[5][0] }}')">🔎</span>-->
+
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+    <div class="about-us">
+      <div class="about-section">
+        <h2>About Our Shop</h2>
+        <p>best shop in the city.<br><br>
+          Echri matendemch kho.<br> <br>
+          sle3et roma felhoma haha<br><br>
+        </p>
+    </div>
+    <div class="contact-section">
+        <h2>Contact Information</h2>
+        <p>Email: shopHna@gmail.com<br><br>
+          phone number: 05554455842<br><br>
+          instagrame: Shop_hna
+        
+        </p>
+    </div>
+    <div class="payment-section">
+        <h2>Payment Methods</h2>
+        <p>KHELSOUNA BRK</p>
+    </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  
+</body>
+</html>

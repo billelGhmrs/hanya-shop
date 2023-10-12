@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+            background-image: url('Logo_Hanya3.png');
+            /*background-image: url('wall.jpg');*/
+            /*background-size: cover; /* Scale the image to cover the entire container */
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keep the background fixed while scrolling */
+            background-position: center;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          border: solid;
+          animation: changeBorderColor 4s infinite;
+          width: 60px; /* Set a fixed width for the logo */
+          height: 60px; /* Set a fixed height for the logo */
+        }
+
+        .logo img {
+          width: 100%; /* Make the image take up the entire width of the container */
+          height: 100%; /* Make the image take up the entire height of the container */
+          border-radius: 50%;
+          object-fit: cover; /* Ensure the central part of the image is visible, excess is clipped */
+        }
+        @keyframes changeBorderColor {
+          0% {
+            border-color: #ED1E79 /* Start with one color */
+          }
+          25%{
+            border-color: #8f1176;
+          }
+          50% {
+            border-color: #7b0995 /* Transition to another color at 50% */
+          }
+          75%{
+            border-color: #3e1290;
+          }
+          100% {
+            border-color: #0000FF /* End with a different color */
+          }
+        }
+
+
+        p {
+            font-size: 20px;
+            text-align: center;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <a href="/home" class="logo">
+        <img src="static/Logo_Hanya5.png" alt="Your Logo">
+    </a>
+    <p>Thanks for trusting us</p>
+</body>
+</html>

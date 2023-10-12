@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Phone Number</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        .phone-number {
+            display: none; /* Initially hidden */
+        }
+        .iconf{
+          color: black;
+        }
+    </style>
+</head>
+<body>
+    <i class="fa fa-phone" id="phone-icon" class="iconf"></i>
+    <p class="phone-number" id="phone-display">123-456-7890</p>
+
+    <script>
+        // Get the phone icon and phone number elements
+        const phoneIcon = document.getElementById("phone-icon");
+        const phoneDisplay = document.getElementById("phone-display");
+
+        // Add a click event listener to the phone icon
+        phoneIcon.addEventListener("click", function () {
+            // Toggle the visibility of the phone number
+            if (phoneDisplay.style.display === "none") {
+                phoneDisplay.style.display = "block";
+            } else {
+                phoneDisplay.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
